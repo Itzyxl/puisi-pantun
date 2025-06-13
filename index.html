@@ -9,6 +9,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Define custom colors based on the image's aesthetic */
+        /* Styles for the floating heart */
+        
+        .floating-heart {
+            position: fixed;
+            /* Use fixed so it stays relative to viewport */
+            pointer-events: none;
+            /* Make it unclickable */
+            font-size: 24px;
+            /* Default size */
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            /* Start hidden and small */
+            animation: floatAndFade 1s ease-out forwards;
+            z-index: 9999;
+            /* Ensure it's on top */
+            color: #FF69B4;
+            /* Pink color for heart */
+            /* Responsive font size for love icon */
+            font-size: 1.5rem;
+            /* Default for mobile (24px) */
+        }
+        
+        @media (min-width: 640px) {
+            /* sm breakpoint */
+            .floating-heart {
+                font-size: 2rem;
+                /* Larger for desktop (32px) */
+            }
+        }
+        
+        @keyframes floatAndFade {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+                filter: hue-rotate(0deg);
+                /* Optional: add a subtle color shift */
+            }
+            20% {
+                transform: translate(-50%, -50%) scale(1.2);
+                /* Slightly larger */
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -150%) scale(1);
+                /* Float up and fade */
+                filter: hue-rotate(90deg);
+                /* Optional: end with a color shift */
+            }
+        }
         
          :root {
             --bg-primary: #bbb09d;
@@ -162,7 +211,7 @@
             <button class="theme-button" style="background-color: #A7C7E7;" onclick="applyTheme('blue')" title="Blue Theme"></button>
         </div>
         <audio id="myAudio" src="http://cdn.freesound.org/previews/561/561383_12295155-lq.mp3" preload="metadata"></audio>
-
+        <audio id="click-sfx" src="https://www.soundjay.com/buttons/sounds/button-09a.mp3" preload="auto"></audio>
 
         <div class="w-full flex justify-center md:justify-start">
             <h2 class="text-xl sm:text-2xl font-playfair font-bold text-white text-center py-3 px-12 sm:px-20 lg:px-40" id="puisi" style="background-color: #7E6355;"> Puisi
@@ -248,6 +297,57 @@
 
         let puisiIndex = 0;
         let pantunIndex = 0;
+        // Get the audio element
+        const clickSfx = document.getElementById('click-sfx');
+        clickSfx.volume = 0.15;
+
+        // Function to play the SFX
+        function playClickSfx() {
+            clickSfx.currentTime = 0; // Reset audio to start in case it's still playing
+            clickSfx.play().catch(e => console.error("Error playing sound:", e)); // Add catch for potential play() errors
+        }
+
+        // Function to create and animate a heart element
+        function createFloatingHeart(x, y) {
+            const heart = document.createElement('span');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '✨'; // Or any other emoji/character like '✨' or '💫'
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            document.body.appendChild(heart);
+
+            // Remove the heart after the animation finishes
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        // Event listener for clicks/taps on the entire document
+        document.addEventListener('click', (event) => {
+            // Play the sound effect
+            playClickSfx();
+
+            // Create the floating heart at the click position
+            createFloatingHeart(event.clientX, event.clientY);
+        });
+
+        // For touch devices (to ensure it works on mobile taps)
+        document.addEventListener('touchstart', (event) => {
+            // Prevent default touch behavior (like zooming) if needed, be careful with this
+            // event.preventDefault();
+
+            // Play the sound effect
+            playClickSfx();
+
+            // Create the floating heart at the touch position
+            // Use the first touch point for simplicity
+            if (event.touches.length > 0) {
+                const touch = event.touches[0];
+                createFloatingHeart(touch.clientX, touch.clientY);
+            }
+        }, {
+            passive: true
+        }); // Use { passive: true } for better scroll performance on touch
 
         // Fungsi untuk merender puisi saat ini
         function renderPuisi() {
