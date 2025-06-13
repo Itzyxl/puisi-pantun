@@ -103,55 +103,55 @@
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col items-center p-4 md:p-8">
+<body class="min-h-screen flex flex-col items-center p-2 sm:p-4 md:p-8">
 
-    <div class="w-full max-w-7xl p-4 md:p-6 lg:p-8 relative overflow-hidden">
+    <div class="w-full max-w-7xl p-2 sm:p-4 md:p-6 lg:p-8 relative overflow-hidden">
 
-        <header class="w-full text-gray-800 p-4 flex items-center justify-between shadow-sm mb-6 relative z-10" id="headercolor">
-            <div class="flex items-center gap-3">
-                <span class="text-xl font-extrabold text-white ml-4">Selamat Datang di SICERAH</span>
-                <span class="text-2xl text-white">●</span>
+        <header class="w-full text-gray-800 p-3 flex items-center justify-between shadow-sm mb-4 sm:mb-6 relative z-10" id="headercolor">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <span class="text-base sm:text-xl font-extrabold text-white ml-2 sm:ml-4">Selamat Datang di SICERAH</span>
+                <span class="text-xl sm:text-2xl text-white">●</span>
             </div>
         </header>
 
-        <div class="relative w-full h-[50vh] md:h-[75vh] bg-cover bg-center rounded-2xl shadow-md overflow-hidden mb-8" style="background-image: url('https://i.pinimg.com/736x/ad/27/17/ad27177ac341711d46a19fe60db109d1.jpg');">
-            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-6 rounded-2xl">
+        <div class="relative w-full h-[40vh] md:h-[75vh] bg-cover bg-center rounded-2xl shadow-md overflow-hidden mb-6 sm:mb-8" style="background-image: url('https://i.pinimg.com/736x/ad/27/17/ad27177ac341711d46a19fe60db109d1.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4 sm:p-6 rounded-2xl">
                 <div class="text-white text-center">
-                    <p class="font-playfair text-2xl md:text-3xl italic font-bold">“Jejak Kata dalam Hati.”</p>
-                    <p class="font-playfair text-lg md:text-xl italic mt-2 opacity-90">Koleksi Pantun dan Puisi Indah</p>
+                    <p class="font-playfair text-xl sm:text-2xl md:text-3xl italic font-bold">“Jejak Kata dalam Hati.”</p>
+                    <p class="font-playfair text-base sm:text-lg md:text-xl italic mt-1 sm:mt-2 opacity-90">Koleksi Pantun dan Puisi Indah</p>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-4 mb-10">
-            <button onclick="document.getElementById('puisi').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-3 bg-[#7E6355] text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+            <button onclick="document.getElementById('puisi').scrollIntoView({ behavior: 'smooth' })" class="px-6 py-2 sm:px-8 sm:py-3 button-scroll-style text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
                 Baca Puisi
             </button>
-            <button onclick="document.getElementById('pantun').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-3 bg-[#7E6355] text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
+            <button onclick="document.getElementById('pantun').scrollIntoView({ behavior: 'smooth' })" class="px-6 py-2 sm:px-8 sm:py-3 button-scroll-style text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
                 Baca Pantun
             </button>
         </div>
 
-        <div id="music-player" class="flex items-center gap-4">
+        <div id="music-player" class="flex items-center gap-2 sm:gap-4">
             <div class="flex flex-col text-right">
-                <span id="song-title" class="text-lg font-semibold text-text-dark">Music</span>
+                <span id="song-title" class="text-base sm:text-lg font-semibold text-text-dark"></span>
             </div>
             <button id="play-pause-button" class="bg-accent-brown text-white p-2 rounded-full shadow-md hover:bg-button-bg transition duration-300">
-                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.13V10.87a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
-            <input type="range" id="progress-bar" value="0" max="100" class="w-32 h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer">
-            <span id="current-time">00:00</span> / <span id="duration">00:00</span>
+            <input type="range" id="progress-bar" value="0" max="100" class="flex-grow h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+            <span id="current-time" class="text-sm">00:00</span> / <span id="duration" class="text-sm">00:00</span>
         </div>
 
 
-        <h1 class="text-2xl font-playfair font-bold text-white text-center mt-8 md:mt mb-4"> Ubah Tema</h1>
-        <div class="flex gap-2 justify-center -12 mb-12">
+        <h1 class="text-xl sm:text-2xl font-playfair font-bold text-white text-center mt-6 md:mt-8 mb-4"> Ubah Tema</h1>
+        <div class="flex gap-1 sm:gap-2 justify-center -12 mb-10 sm:mb-12">
             <button class="theme-button" style="background-color: #8B7355;" onclick="applyTheme('brown')" title="Brown Theme"></button>
             <button class="theme-button" style="background-color: #F8C8DC;" onclick="applyTheme('pink')" title="Pink Theme"></button>
             <button class="theme-button" style="background-color: #B0D9B1;" onclick="applyTheme('matcha')" title="Matcha Theme"></button>
@@ -163,22 +163,23 @@
 
 
         <div class="w-full flex justify-center md:justify-start">
-            <h2 class="text-2xl font-playfair font-bold text-white text-center py-4 px-40" id="puisi" style="background-color: #7E6355;"> Puisi
+            <h2 class="text-xl sm:text-2xl font-playfair font-bold text-white text-center py-3 px-12 sm:px-20 lg:px-40" id="puisi" style="background-color: #7E6355;"> Puisi
             </h2>
         </div>
-        <div id="puisicolor" class="w-full bg-card-bg p-6 md:p-8 rounded-l shadow-xl mb-10 border border-gray-200 pb-16">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
-                <div class="relative"> <img src="https://i.pinimg.com/736x/03/5d/f5/035df5f057f5b5381129e1299b5b8d12.jpg" alt="Ilustrasi Puisi" class="w-80 h-80 object-cover rounded-xl shadow-md flex-shrink-0 relative z-20">
-                    <div class="absolute w-80 h-80 bg-accent-brown rounded-xl -bottom-5 -right-5 z-10" id="warnafoto"></div>
+        <div id="puisicolor" class="w-full bg-card-bg p-4 md:p-8 rounded-l shadow-xl mb-8 sm:mb-10 border border-gray-200 pb-12 sm:pb-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-12">
+                <div class="relative">
+                    <img src="https://i.pinimg.com/736x/03/5d/f5/035df5f057f5b5381129e1299b5b8d12.jpg" alt="Ilustrasi Puisi" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover rounded-xl shadow-md flex-shrink-0 relative z-20">
+                    <div class="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-accent-brown rounded-xl -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 md:-bottom-5 md:-right-5 z-10" id="warnafoto"></div>
                 </div>
-                <div class="flex-grow text-center md:text-center min-w-[372px]">
-                    <h3 id="puisiJudul" class="font-playfair text-2xl font-semibold text-text-dark mb-3"></h3>
-                    <pre id="puisiIsi" class="text-gray-700 leading-relaxed text-base p-4 "></pre>
-                    <div class="flex justify-between mt-6">
-                        <button onclick="navPuisi(-1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                <div class="flex-grow text-center md:text-center min-w-[280px] sm:min-w-[372px]">
+                    <h3 id="puisiJudul" class="font-playfair text-xl sm:text-2xl font-semibold text-text-dark mb-2 sm:mb-3"></h3>
+                    <pre id="puisiIsi" class="text-gray-700 leading-relaxed text-sm sm:text-base p-2 sm:p-4"></pre>
+                    <div class="flex justify-between mt-4 sm:mt-6">
+                        <button onclick="navPuisi(-1)" class="px-4 py-2 sm:px-6 sm:py-2 button-scroll-style text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
                     ← Sebelumnya
                 </button>
-                        <button onclick="navPuisi(1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                        <button onclick="navPuisi(1)" class="px-4 py-2 sm:px-6 sm:py-2 button-scroll-style text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
                     Selanjutnya →
                 </button>
                     </div>
@@ -187,32 +188,33 @@
         </div>
 
         <div class="w-full flex justify-center md:justify-end">
-            <h2 class="text-2xl font-playfair font-bold text-white text-center py-4 px-40" id="pantun" style="background-color: #7E6355;"> Pantun
+            <h2 class="text-xl sm:text-2xl font-playfair font-bold text-white text-center py-3 px-12 sm:px-20 lg:px-40" id="pantun" style="background-color: #7E6355;"> Pantun
             </h2>
         </div>
-        <div id="pantuncolor" class="w-full bg-card-bg p-6 md:p-8 rounded-l shadow-xl border border-gray-200 pb-16">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
-                <div class="flex-grow text-center md:text-center min-w-[372px]">
-                    <h3 id="pantunJudul" class="font-playfair text-2xl font-semibold text-text-dark mb-3"></h3>
-                    <pre id="pantunIsi" class="text-gray-700 leading-relaxed text-base p-4 "></pre>
-                    <div class="flex justify-between mt-6">
-                        <button onclick="navPantun(-1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+        <div id="pantuncolor" class="w-full bg-card-bg p-4 md:p-8 rounded-l shadow-xl border border-gray-200 pb-12 sm:pb-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-12">
+                <div class="flex-grow text-center md:text-center min-w-[280px] sm:min-w-[372px]">
+                    <h3 id="pantunJudul" class="font-playfair text-xl sm:text-2xl font-semibold text-text-dark mb-2 sm:mb-3"></h3>
+                    <pre id="pantunIsi" class="text-gray-700 leading-relaxed text-sm sm:text-base p-2 sm:p-4"></pre>
+                    <div class="flex justify-between mt-4 sm:mt-6">
+                        <button onclick="navPantun(-1)" class="px-4 py-2 sm:px-6 sm:py-2 button-scroll-style text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
                     ← Sebelumnya
                 </button>
-                        <button onclick="navPantun(1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                        <button onclick="navPantun(1)" class="px-4 py-2 sm:px-6 sm:py-2 button-scroll-style text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
                     Selanjutnya →
                 </button>
                     </div>
                 </div>
-                <div class="relative"> <img src="https://i.pinimg.com/736x/2b/e9/2c/2be92cc6a93ba283bf64c2fd8775abe7.jpg" alt="Ilustrasi Pantun" class="w-80 h-80 object-cover rounded-xl shadow-md flex-shrink-0  relative z-20">
-                    <div class="absolute w-80 h-80 bg-accent-brown  rounded-xl -bottom-5 -right-5 z-10" id="warnafoto"></div>
+                <div class="relative">
+                    <img src="https://i.pinimg.com/736x/2b/e9/2c/2be92cc6a93ba283bf64c2fd8775abe7.jpg" alt="Ilustrasi Pantun" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover rounded-xl shadow-md flex-shrink-0  relative z-20">
+                    <div class="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-accent-brown  rounded-xl -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 md:-bottom-5 md:-right-5 z-10" id="warnafoto"></div>
                 </div>
             </div>
         </div>
 
-        <footer class="mt-10 p-6 text-center text-gray-600">
-            <p class="text-lg font-semibold">"SICERAH! Siswa Cerdas Sastra Daerah"</p>
-            <p class="text-sm mt-2">© 2025 Pantun & Puisi SICERAH web</p>
+        <footer class="mt-8 sm:mt-10 p-4 sm:p-6 text-center text-gray-600">
+            <p class="text-base sm:text-lg font-semibold">"SICERAH! Siswa Cerdas Sastra Daerah"</p>
+            <p class="text-xs sm:text-sm mt-1 sm:mt-2">© 2025 Pantun & Puisi SICERAH web</p>
         </footer>
 
     </div>
@@ -266,10 +268,15 @@
         }
 
         // Fungsi untuk navigasi pantun
+        // ******************************************************
+        // PERBAIKAN: Perbaiki typo pada baris ini
+        // Sebelum: if (pantunIndex >= pantunData.length) pantunData.length - 1;
+        // Sesudah: if (pantunIndex >= pantunData.length) pantunIndex = pantunData.length - 1;
+        // ******************************************************
         function navPantun(step) {
             pantunIndex += step;
             if (pantunIndex < 0) pantunIndex = 0;
-            if (pantunIndex >= pantunData.length) pantunData.length - 1;
+            if (pantunIndex >= pantunData.length) pantunIndex = pantunData.length - 1; // Perbaikan ini
             renderPantun();
         }
 
@@ -280,6 +287,7 @@
         const progressBar = document.getElementById('progress-bar');
         const currentTimeSpan = document.getElementById('current-time');
         const durationSpan = document.getElementById('duration');
+        const songTitleSpan = document.getElementById('song-title'); // Tambahkan ini
 
         // Fungsi untuk format waktu (misal: 03:05)
         function formatTime(seconds) {
@@ -305,6 +313,7 @@
         myAudio.addEventListener('loadedmetadata', () => {
             durationSpan.innerText = formatTime(myAudio.duration);
             progressBar.max = myAudio.duration;
+            songTitleSpan.innerText = "Instrumental Ambient"; // Atur judul lagu di sini
         });
 
         // Event listener saat waktu lagu berjalan
@@ -429,14 +438,10 @@
 
 
             // Update button background colors for navigation
-            const navButtons = document.querySelectorAll('.px-8.py-3');
-            navButtons.forEach(button => {
-                button.style.backgroundColor = theme['button-scroll'];
-            });
-
-            const scrollButtons = document.querySelectorAll('.px-6.py-2');
-            scrollButtons.forEach(button => {
-                button.style.backgroundColor = theme['button-scroll'];
+            // Gunakan kelas baru 'button-scroll-style' untuk menargetkan semua tombol navigasi
+            const allNavButtons = document.querySelectorAll('.button-scroll-style'); //
+            allNavButtons.forEach(button => { //
+                button.style.backgroundColor = theme['button-scroll']; //
             });
             playPauseButton.style.backgroundColor = theme['accent-brown'];
 
@@ -450,6 +455,7 @@
             if (myAudio.readyState >= 2) { // readyState 2 means enough data to play to end
                 durationSpan.innerText = formatTime(myAudio.duration);
                 progressBar.max = myAudio.duration;
+                songTitleSpan.innerText = "Instrumental Ambient"; // Atur judul lagu di sini saat DOMContentLoaded
             }
             // Apply the default brown theme on load
             applyTheme('brown');
