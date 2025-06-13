@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantun & Puisi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Define custom colors based on the image's aesthetic */
+        
+         :root {
+            --bg-primary: #bbb09d;
+            /* Light beige background */
+            --card-bg: #d2cdc3;
+            /* Slightly darker beige for content cards */
+            --text-dark: #4A4A4A;
+            /* Darker text */
+            --accent-brown: #8B7355;
+            /* Muted brown for accents */
+            --button-bg: #A38B71;
+            /* Brownish tone for buttons */
+            --header-bg: #9C8C70;
+            /* Header background */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+        }
+        /* Gaya untuk elemen pre agar tetap rapi dan sesuai estetika */
+        
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        /* Custom scrollbar for a cleaner look */
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 10px;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--accent-brown);
+            border-radius: 10px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: #735F4C;
+        }
+        
+        #warnafoto {
+            background-color: rgb(126, 99, 85);
+        }
+        
+        #headercolor {
+            background-color: rgb(114, 90, 77);
+        }
+        
+        #puisicolor {
+            background-color: #ded3c1;
+        }
+        
+        #pantuncolor {
+            background-color: #ded3c1;
+        }
+        
+        #music-player {
+            background-color: var(--card-bg);
+            /* Warna latar yang konsisten */
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            justify-content: center;
+            /* Tengah secara isi kontennya */
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+            /* Tengah + beri jarak bawah */
+            z-index: 1000;
+        }
+        
+        .theme-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.2s;
+        }
+        
+        .theme-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center p-4 md:p-8">
+
+    <div class="w-full max-w-7xl p-4 md:p-6 lg:p-8 relative overflow-hidden">
+
+        <header class="w-full text-gray-800 p-4 flex items-center justify-between shadow-sm mb-6 relative z-10" id="headercolor">
+            <div class="flex items-center gap-3">
+                <span class="text-xl font-extrabold text-white ml-4">Selamat Datang di SICERAH</span>
+                <span class="text-2xl text-white">●</span>
+            </div>
+        </header>
+
+        <div class="relative w-full h-[50vh] md:h-[75vh] bg-cover bg-center rounded-2xl shadow-md overflow-hidden mb-8" style="background-image: url('https://i.pinimg.com/736x/ad/27/17/ad27177ac341711d46a19fe60db109d1.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-6 rounded-2xl">
+                <div class="text-white text-center">
+                    <p class="font-playfair text-2xl md:text-3xl italic font-bold">“Jejak Kata dalam Hati.”</p>
+                    <p class="font-playfair text-lg md:text-xl italic mt-2 opacity-90">Koleksi Pantun dan Puisi Indah</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+            <button onclick="document.getElementById('puisi').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-3 bg-[#7E6355] text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
+                Baca Puisi
+            </button>
+            <button onclick="document.getElementById('pantun').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-3 bg-[#7E6355] text-black font-semibold rounded-full shadow-lg hover:bg-accent-brown transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-button-bg/50">
+                Baca Pantun
+            </button>
+        </div>
+
+        <div id="music-player" class="flex items-center gap-4">
+            <div class="flex flex-col text-right">
+                <span id="song-title" class="text-lg font-semibold text-text-dark">Music</span>
+            </div>
+            <button id="play-pause-button" class="bg-accent-brown text-white p-2 rounded-full shadow-md hover:bg-button-bg transition duration-300">
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.13V10.87a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </button>
+            <input type="range" id="progress-bar" value="0" max="100" class="w-32 h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+            <span id="current-time">00:00</span> / <span id="duration">00:00</span>
+        </div>
+
+
+        <h1 class="text-2xl font-playfair font-bold text-white text-center mt-8 md:mt mb-4"> Ubah Tema</h1>
+        <div class="flex gap-2 justify-center -12 mb-12">
+            <button class="theme-button" style="background-color: #8B7355;" onclick="applyTheme('brown')" title="Brown Theme"></button>
+            <button class="theme-button" style="background-color: #F8C8DC;" onclick="applyTheme('pink')" title="Pink Theme"></button>
+            <button class="theme-button" style="background-color: #B0D9B1;" onclick="applyTheme('matcha')" title="Matcha Theme"></button>
+            <button class="theme-button" style="background-color: #D2B48C;" onclick="applyTheme('caramel')" title="Caramel Theme"></button>
+            <button class="theme-button" style="background-color: #6F4E37;" onclick="applyTheme('coffee')" title="Coffee Theme"></button>
+            <button class="theme-button" style="background-color: #A7C7E7;" onclick="applyTheme('blue')" title="Blue Theme"></button>
+        </div>
+        <audio id="myAudio" src="http://cdn.freesound.org/previews/561/561383_12295155-lq.mp3" preload="metadata"></audio>
+
+
+        <div class="w-full flex justify-center md:justify-start">
+            <h2 class="text-2xl font-playfair font-bold text-white text-center py-4 px-40" id="puisi" style="background-color: #7E6355;"> Puisi
+            </h2>
+        </div>
+        <div id="puisicolor" class="w-full bg-card-bg p-6 md:p-8 rounded-l shadow-xl mb-10 border border-gray-200 pb-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="relative"> <img src="https://i.pinimg.com/736x/03/5d/f5/035df5f057f5b5381129e1299b5b8d12.jpg" alt="Ilustrasi Puisi" class="w-80 h-80 object-cover rounded-xl shadow-md flex-shrink-0 relative z-20">
+                    <div class="absolute w-80 h-80 bg-accent-brown rounded-xl -bottom-5 -right-5 z-10" id="warnafoto"></div>
+                </div>
+                <div class="flex-grow text-center md:text-center min-w-[372px]">
+                    <h3 id="puisiJudul" class="font-playfair text-2xl font-semibold text-text-dark mb-3"></h3>
+                    <pre id="puisiIsi" class="text-gray-700 leading-relaxed text-base p-4 "></pre>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="navPuisi(-1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                    ← Sebelumnya
+                </button>
+                        <button onclick="navPuisi(1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                    Selanjutnya →
+                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full flex justify-center md:justify-end">
+            <h2 class="text-2xl font-playfair font-bold text-white text-center py-4 px-40" id="pantun" style="background-color: #7E6355;"> Pantun
+            </h2>
+        </div>
+        <div id="pantuncolor" class="w-full bg-card-bg p-6 md:p-8 rounded-l shadow-xl border border-gray-200 pb-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="flex-grow text-center md:text-center min-w-[372px]">
+                    <h3 id="pantunJudul" class="font-playfair text-2xl font-semibold text-text-dark mb-3"></h3>
+                    <pre id="pantunIsi" class="text-gray-700 leading-relaxed text-base p-4 "></pre>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="navPantun(-1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                    ← Sebelumnya
+                </button>
+                        <button onclick="navPantun(1)" class="px-6 py-2 bg-[#7E6355] text-white font-semibold rounded-lg shadow-md hover:bg-button-bg transition duration-300 focus:outline-none focus:ring-4 focus:ring-accent-brown/50">
+                    Selanjutnya →
+                </button>
+                    </div>
+                </div>
+                <div class="relative"> <img src="https://i.pinimg.com/736x/2b/e9/2c/2be92cc6a93ba283bf64c2fd8775abe7.jpg" alt="Ilustrasi Pantun" class="w-80 h-80 object-cover rounded-xl shadow-md flex-shrink-0  relative z-20">
+                    <div class="absolute w-80 h-80 bg-accent-brown  rounded-xl -bottom-5 -right-5 z-10" id="warnafoto"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-10 p-6 text-center text-gray-600">
+            <p class="text-lg font-semibold">"SICERAH! Siswa Cerdas Sastra Daerah"</p>
+            <p class="text-sm mt-2">© 2025 Pantun & Puisi SICERAH web</p>
+        </footer>
+
+    </div>
+    <script>
+        // Data untuk puisi dan pantun
+        const puisiData = [{
+            judul: "GURUKU...",
+            isi: "Guruku....\nTubo adalah jemu yang sangat berjasa\nTiap aghi tubo rela ninggalkan keluargo\nDemi untuk ngajari kami\nGuruku....\nTubo rela kehujanan dan kepanasan\nHanya untuk ngkujokkan ilmu ngeh kami\nTanpa tubo kami olok o debu yang berkarbangan\nGuruku...\nTerimokaseh lah ngajari kami dengan tulus\nMaafkan kami selaku murid tubo kalau\nkami galak melawan\nGalak nedo norok perintah tubo\nGuruku....\nTerimokaseh untuk segalo ilmu dan jasa tubo\nJasa tubo akan kami ukir dan kami ingek kurus"
+        }, {
+            judul: "Cinta di Ujung Senja",
+            isi: "Angin berderai lirih\nMenerpa badan mungil ini\nHijau hijau pohon pinus itu\nMenambah kesejukan di dalamnya\nOmbak ombak bergulung menghampiri tepian\nSenja itu...\nSenja yang memanjakan mata\nSenja yang menghampiri hanya sesaat\nSenja yang berjanji untuk kembali\nDan senjaiah juga yang mengingatkanku\nPadanya.....\nDiriku mulai terbawa arus ombak\nMngenang masa masa itu....\nSeakan alam pun mendukung tau....\nDengan apa yang telah di rasakan...\nSenjaaa...\nWarnamu mulai tak terlihat...\nDirimu mulai terbenam\nDan diriku mulai tenggelam\nTenggelam ke lautan kesendirian\nSenjaa....\nKutitipkan sebuah nama...\nNama yang menghantarkanku\nUntuk menghampirimu...\nNama yang mengadatangkanku\nUntuk kembali melihatmu, senjaa...\nSee you senjaa.. Seeyou kenangan..."
+        }];
+        const pantunData = [{
+            judul: "Bahasa Bengkulu dialek pekal",
+            isi: "Gig ke toko nyagai baju\nMpuak ngan kak raju\nKalau aug ndak berilmu\nGi luih belaja selalu\n\nGig Kebalai melai sayur\nTi lupo melai mangga\nGi luih lah teratur\nLah tuo sangat bermakna\n\nJalan jalan ke balai panorama\nTi lupo singgiah ke muah desvita\nKalau aug ndak disayang guag tuo\nMakonyo tugut lah lagalau perintahnyo"
+        }, {
+            judul: "Bahasa Bengkulu dialek pekal 2",
+            isi: "Kebalai melai jamu\nDiminum waktu subuh\nKalau ndak banyak ilmu\nBelajar ngan sungguh sungguh\n\nJalan jalan ke ngulug\nSinggah ntia melai bukug\nKalau aug ndak nuntut ilmu\nHormatilah ibu bapak guru\n\nJalan jalan ke kota padang\nTi lupo melai pedang\nKalau adek sayang abang\nBelikan abang rokok sebatang"
+        }, {
+            judul: "Bahasa Bengkulu dialek serawai",
+            isi: "Jalan jalan ke kalangan kamis\nJangan nedo kegingat meli gamis\nAmen kabah nak dipantau manis\nJanganlah kabah galak sinis\n\nJalan jalan ke liukang\nJangan nedo keinaat meli kentang\nAmen kabah nak hidup tenang\nJanganlah kabah galak ngukang\n\nJalan jalan ke kalangan sabtu\nSinggah meli sepaku\nAmen kabah nak hidup maju\nJangan lupo belajar selalu"
+        }, {
+            judul: "Bahasa Bengkulu dialek lembak",
+            isi: "Makan nasi bekuah soto\nDem tu makan buah naga\nRajen rajenlah belajo\nMake umak bak bangga\n\nBetanak nasi pagi ahai\nSiange nomes gedang\nJanganlah betunak kudai\nMen semayang be jarang\n\nPegi kume bekaki bengkak\nBelek ketemu ulo\nJanganlah banyak kendak\nMake umak bak idak saro"
+        }, {
+            judul: "Bahasa Bengkulu dialek Rejang",
+            isi: "Alau may kebun temau siper\nPas belek bilai panes\nWalaupun keme tun sadei\nTapi keme semulen baes\n\nBlajea baco samo mbuk serkayo\nSudo blajea meto umean tun\nPercumo bae kayo rayo\nAmen masiak kisit ngen tun\n\nAlau makmur liwet kemumu\nNak dalen temau tun slibea\nPercuma bae dau ilmu\nAmen masiak kuang ajea"
+        }, ];
+
+        let puisiIndex = 0;
+        let pantunIndex = 0;
+
+        // Fungsi untuk merender puisi saat ini
+        function renderPuisi() {
+            document.getElementById("puisiJudul").innerText = puisiData[puisiIndex].judul;
+            document.getElementById("puisiIsi").innerText = puisiData[puisiIndex].isi;
+        }
+
+        // Fungsi untuk merender pantun saat ini
+        function renderPantun() {
+            document.getElementById("pantunJudul").innerText = pantunData[pantunIndex].judul;
+            document.getElementById("pantunIsi").innerText = pantunData[pantunIndex].isi;
+        }
+
+        // Fungsi untuk navigasi puisi
+        function navPuisi(step) {
+            puisiIndex += step;
+            if (puisiIndex < 0) puisiIndex = 0;
+            if (puisiIndex >= puisiData.length) puisiIndex = puisiData.length - 1;
+            renderPuisi();
+        }
+
+        // Fungsi untuk navigasi pantun
+        function navPantun(step) {
+            pantunIndex += step;
+            if (pantunIndex < 0) pantunIndex = 0;
+            if (pantunIndex >= pantunData.length) pantunData.length - 1;
+            renderPantun();
+        }
+
+        const myAudio = document.getElementById('myAudio');
+        const playPauseButton = document.getElementById('play-pause-button');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeSpan = document.getElementById('current-time');
+        const durationSpan = document.getElementById('duration');
+
+        // Fungsi untuk format waktu (misal: 03:05)
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+        }
+
+        // Event listener untuk tombol Play/Pause
+        playPauseButton.addEventListener('click', () => {
+            if (myAudio.paused) {
+                myAudio.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            } else {
+                myAudio.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+        });
+
+        // Event listener saat metadata lagu dimuat (untuk mendapatkan durasi)
+        myAudio.addEventListener('loadedmetadata', () => {
+            durationSpan.innerText = formatTime(myAudio.duration);
+            progressBar.max = myAudio.duration;
+        });
+
+        // Event listener saat waktu lagu berjalan
+        myAudio.addEventListener('timeupdate', () => {
+            currentTimeSpan.innerText = formatTime(myAudio.currentTime);
+            progressBar.value = myAudio.currentTime;
+        });
+
+        // Event listener saat progress bar digeser
+        progressBar.addEventListener('input', () => {
+            myAudio.currentTime = progressBar.value;
+        });
+
+        // Event listener saat lagu selesai
+        myAudio.addEventListener('ended', () => {
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            myAudio.currentTime = 0; // Kembali ke awal
+            progressBar.value = 0;
+            currentTimeSpan.innerText = "00:00";
+        });
+
+        // Theme data
+        const themes = {
+            brown: {
+                '--bg-primary': '#bbb09d',
+                '--card-bg': '#d2cdc3',
+                '--text-dark': '#4A4A4A',
+                '--accent-brown': '#8B7355',
+                '--button-bg': '#A38B71',
+                '--header-bg': '#9C8C70',
+                'warnafoto': 'rgb(126, 99, 85)',
+                'headercolor': 'rgb(114, 90, 77)',
+                'puisicolor': '#ded3c1',
+                'pantuncolor': '#ded3c1',
+                'button-scroll': '#7E6355'
+            },
+            pink: {
+                '--bg-primary': '#FADFEE',
+                '--card-bg': '#F8C8DC',
+                '--text-dark': '#5C3A4F',
+                '--accent-brown': '#D49ABF',
+                '--button-bg': '#E6A8CD',
+                '--header-bg': '#C27BA0',
+                'warnafoto': 'rgb(212, 154, 191)',
+                'headercolor': 'rgb(194, 123, 160)',
+                'puisicolor': '#FBEFF5',
+                'pantuncolor': '#FBEFF5',
+                'button-scroll': '#C27BA0'
+            },
+            matcha: {
+                '--bg-primary': '#E0FFE0',
+                '--card-bg': '#B0D9B1',
+                '--text-dark': '#3A5C3A',
+                '--accent-brown': '#7AA37A',
+                '--button-bg': '#8CBB8C',
+                '--header-bg': '#6A936A',
+                'warnafoto': 'rgb(122, 163, 122)',
+                'headercolor': 'rgb(106, 147, 106)',
+                'puisicolor': '#F0FFF0',
+                'pantuncolor': '#F0FFF0',
+                'button-scroll': '#6A936A'
+            },
+            caramel: {
+                '--bg-primary': '#F5DEB3',
+                '--card-bg': '#D2B48C',
+                '--text-dark': '#6F4F28',
+                '--accent-brown': '#A0522D',
+                '--button-bg': '#B8860B',
+                '--header-bg': '#8B4513',
+                'warnafoto': 'rgb(160, 82, 45)',
+                'headercolor': 'rgb(139, 69, 19)',
+                'puisicolor': '#FFF8DC',
+                'pantuncolor': '#FFF8DC',
+                'button-scroll': '#8B4513'
+            },
+            coffee: {
+                '--bg-primary': '#D2B48C',
+                '--card-bg': '#A0522D',
+                '--text-dark': '#4A2B1B',
+                '--accent-brown': '#6F4E37',
+                '--button-bg': '#8B4513',
+                '--header-bg': '#5A3A2B',
+                'warnafoto': 'rgb(111, 78, 55)',
+                'headercolor': 'rgb(90, 58, 43)',
+                'puisicolor': '#F5DEB3',
+                'pantuncolor': '#F5DEB3',
+                'button-scroll': '#5A3A2B'
+            },
+            blue: {
+                '--bg-primary': '#E0F2F7',
+                '--card-bg': '#A7C7E7',
+                '--text-dark': '#3A4A5A',
+                '--accent-brown': '#6B9DC2',
+                '--button-bg': '#7BB8D2',
+                '--header-bg': '#5A8BB8',
+                'warnafoto': 'rgb(107, 157, 194)',
+                'headercolor': 'rgb(90, 139, 184)',
+                'puisicolor': '#F0F8FF',
+                'pantuncolor': '#F0F8FF',
+                'button-scroll': '#5A8BB8'
+            }
+        };
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            const root = document.documentElement;
+
+            for (const key in theme) {
+                if (key.startsWith('--')) {
+                    root.style.setProperty(key, theme[key]);
+                }
+            }
+
+            // Update specific element background colors
+            document.getElementById('warnafoto').style.backgroundColor = theme['warnafoto'];
+            document.getElementById('headercolor').style.backgroundColor = theme['headercolor'];
+            document.getElementById('puisi').style.backgroundColor = theme['button-scroll'];
+            document.getElementById('pantun').style.backgroundColor = theme['button-scroll'];
+            document.getElementById('puisicolor').style.backgroundColor = theme['puisicolor'];
+            document.getElementById('pantuncolor').style.backgroundColor = theme['pantuncolor'];
+
+
+            // Update button background colors for navigation
+            const navButtons = document.querySelectorAll('.px-8.py-3');
+            navButtons.forEach(button => {
+                button.style.backgroundColor = theme['button-scroll'];
+            });
+
+            const scrollButtons = document.querySelectorAll('.px-6.py-2');
+            scrollButtons.forEach(button => {
+                button.style.backgroundColor = theme['button-scroll'];
+            });
+            playPauseButton.style.backgroundColor = theme['accent-brown'];
+
+        }
+
+        // Render pertama kali saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPuisi();
+            renderPantun();
+            // Inisialisasi durasi jika sudah dimuat
+            if (myAudio.readyState >= 2) { // readyState 2 means enough data to play to end
+                durationSpan.innerText = formatTime(myAudio.duration);
+                progressBar.max = myAudio.duration;
+            }
+            // Apply the default brown theme on load
+            applyTheme('brown');
+        });
+    </script>
+
+</body>
+
+</html>
